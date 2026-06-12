@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Reservas de Mesa</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🍽️ Sistema de Reservas de Mesa</h1>
+      <p>Desenvolvimento Web III — TypeScript + MongoDB</p>
+    </header>
+
+    <!-- Área onde aparecem as mensagens de sucesso/erro -->
+    <div id="mensagem" class="mensagem oculto"></div>
+
+    <main>
+      <!-- ===================== MAPA VISUAL ===================== -->
+      <section class="card">
+        <h2>Mapa das Mesas</h2>
+        <div class="legenda">
+          <span><i class="bola verde"></i> Disponível</span>
+          <span><i class="bola amarelo"></i> Reservado</span>
+          <span><i class="bola vermelho"></i> Ocupado</span>
+        </div>
+        <div id="mapa" class="mapa"></div>
+      </section>
+
+      <!-- ===================== FORMULÁRIO ===================== -->
+      <section class="card">
+        <h2 id="tituloForm">Nova Reserva</h2>
+        <form id="formReserva">
+          <!-- guarda o id quando estamos editando uma reserva -->
+          <input type="hidden" id="reservaId" />
+
+          <div class="campo">
+            <label for="nomeCliente">Nome do cliente *</label>
+            <input type="text" id="nomeCliente" required />
+          </div>
+
+          <div class="campo">
+            <label for="contatoCliente">Contato *</label>
+            <input type="text" id="contatoCliente" placeholder="Telefone / e-mail" required />
+          </div>
+
+          <div class="campo">
+            <label for="numeroMesa">Mesa *</label>
+            <select id="numeroMesa" required></select>
+          </div>
+
+          <div class="campo">
+            <label for="quantidadePessoas">Qtd. pessoas *</label>
+            <input type="number" id="quantidadePessoas" min="1" required />
+          </div>
+
+          <div class="campo">
+            <label for="dataHoraInicio">Data e hora *</label>
+            <input type="datetime-local" id="dataHoraInicio" required />
+          </div>
+
+          <div class="campo">
+            <label for="duracaoMinutos">Duração (min)</label>
+            <input type="number" id="duracaoMinutos" min="1" value="90" />
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="observacoes">Observações</label>
+            <textarea id="observacoes" rows="2"></textarea>
+          </div>
+
+          <div class="botoes">
+            <button type="submit" id="btnSalvar">Salvar reserva</button>
+            <button type="button" id="btnCancelarEdicao" class="secundario oculto">
+              Cancelar edição
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ===================== LISTA + FILTROS ===================== -->
+      <section class="card">
+        <h2>Reservas</h2>
+        <div class="filtros">
+          <input type="text" id="filtroCliente" placeholder="Filtrar por cliente" />
+          <input type="number" id="filtroMesa" placeholder="Mesa" min="1" />
+          <input type="date" id="filtroData" />
+          <select id="filtroStatus">
+            <option value="">Todos os status</option>
+            <option value="reservado">Reservado</option>
+            <option value="ocupado">Ocupado</option>
+            <option value="finalizado">Finalizado</option>
+            <option value="cancelado">Cancelado</option>
+          </select>
+          <button type="button" id="btnFiltrar">Filtrar</button>
+          <button type="button" id="btnLimpar" class="secundario">Limpar</button>
+        </div>
+
+        <div class="tabela-wrap">
+          <table id="tabelaReservas">
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Contato</th>
+                <th>Mesa</th>
+                <th>Pessoas</th>
+                <th>Início</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody><!-- preenchido via JavaScript --></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal exibido ao clicar numa mesa do mapa -->
+    <div id="modal" class="modal oculto">
+      <div class="modal-conteudo">
+        <span id="fecharModal" class="fechar">&times;</span>
+        <div id="modalCorpo"></div>
+      </div>
+    </div>
+
+    <script src="./js/app.js"></script>
+  </body>
+</html>

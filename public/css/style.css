@@ -1,0 +1,295 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background: #f0f2f5;
+  color: #1c1e21;
+  line-height: 1.5;
+}
+
+header {
+  background: #b5651d;
+  color: #fff;
+  padding: 24px;
+  text-align: center;
+}
+header h1 {
+  font-size: 1.6rem;
+}
+header p {
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+main {
+  max-width: 960px;
+  margin: 24px auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+.card h2 {
+  margin-bottom: 16px;
+  color: #b5651d;
+  font-size: 1.2rem;
+}
+
+/* ===================== MAPA VISUAL ===================== */
+.legenda {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 16px;
+  font-size: 0.85rem;
+  flex-wrap: wrap;
+}
+.bola {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.verde {
+  background: #2e7d32;
+}
+.amarelo {
+  background: #f9a825;
+}
+.vermelho {
+  background: #c62828;
+}
+
+.mapa {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 14px;
+}
+.mesa {
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  border: none;
+  font-family: inherit;
+}
+.mesa:hover {
+  transform: translateY(-3px);
+}
+.mesa .num {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.mesa .info {
+  font-size: 0.78rem;
+  opacity: 0.95;
+}
+.mesa.disponivel {
+  background: #2e7d32;
+}
+.mesa.reservado {
+  background: #f9a825;
+}
+.mesa.ocupado {
+  background: #c62828;
+}
+
+/* ===================== FORMULÁRIO ===================== */
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+.campo-largo {
+  grid-column: 1 / -1;
+}
+label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+input,
+select,
+textarea {
+  padding: 9px;
+  border: 1px solid #ccd0d5;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+.botoes {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  background: #b5651d;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+button:hover {
+  background: #8a4d16;
+}
+button.secundario {
+  background: #6c757d;
+}
+button.secundario:hover {
+  background: #565e64;
+}
+
+/* ===================== FILTROS + TABELA ===================== */
+.filtros {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.filtros input,
+.filtros select {
+  flex: 1;
+  min-width: 120px;
+}
+
+.tabela-wrap {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+th {
+  background: #faf6f2;
+}
+
+.badge {
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+}
+.badge.reservado {
+  background: #f9a825;
+}
+.badge.ocupado {
+  background: #c62828;
+}
+.badge.finalizado {
+  background: #607d8b;
+}
+.badge.cancelado {
+  background: #9e9e9e;
+}
+
+.acoes button {
+  padding: 5px 10px;
+  font-size: 0.78rem;
+  margin-right: 4px;
+}
+.btn-editar {
+  background: #1976d2;
+}
+.btn-editar:hover {
+  background: #135aa1;
+}
+.btn-cancelar {
+  background: #f9a825;
+}
+.btn-excluir {
+  background: #c62828;
+}
+.btn-excluir:hover {
+  background: #a01f1f;
+}
+
+/* ===================== MENSAGENS ===================== */
+.mensagem {
+  max-width: 960px;
+  margin: 16px auto 0;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.mensagem.sucesso {
+  background: #d4edda;
+  color: #155724;
+}
+.mensagem.erro {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* ===================== MODAL ===================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.modal-conteudo {
+  background: #fff;
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 420px;
+  width: 90%;
+  position: relative;
+}
+.fechar {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #888;
+}
+.modal-conteudo h3 {
+  margin-bottom: 12px;
+  color: #b5651d;
+}
+.modal-conteudo p {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.oculto {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  form {
+    grid-template-columns: 1fr;
+  }
+}
